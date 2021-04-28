@@ -1,6 +1,8 @@
 import firebase from 'firebase';
 
-const firebaseApp = {
+
+
+const firebaseConfig = {
     apiKey: "AIzaSyB-_x4zOcA9WDkqFNjW69T1ffEWwxQYrIQ",
     authDomain: "evernote-clone-adee6.firebaseapp.com",
     projectId: "evernote-clone-adee6",
@@ -11,7 +13,7 @@ const firebaseApp = {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
-  const db = firebaseApp.firestore();
+  const db = firebase.firestore();
 
   export {db};
 
