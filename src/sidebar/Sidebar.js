@@ -67,7 +67,7 @@ function Sidebar({notes , selectedNoteIndex ,selectedNote}){
         )
     }else{
         return(
-            <div></div>
+            <div>No Note Add it</div>
         )
     }
     
