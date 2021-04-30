@@ -20,7 +20,7 @@ function Sidebar({notes , selectedNoteIndex ,selectTitle}){
     }
     function newNoteSubmit(){
         console.log(`${title.title} added`);
-        if(title!==null){
+        if(title.title!==null && title.title!==undefined){
             db.collection('notes').add({
                 title: title.title,
                 body: ''
