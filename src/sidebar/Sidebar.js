@@ -2,26 +2,40 @@ import React from 'react';
 import './sidebar.css'
 import {useState} from 'react'
 import { Divider, List } from '@material-ui/core';
-import SidebarItems from '../sidebaritems/Sidebaritems'
+import SidebarItems from '../sidebaritems/Sidebaritems';
+import {db} from '../firebaseConfig'
 
-function Sidebar({notes , selectedNoteIndex ,selectedNote}){
+function Sidebar({notes , selectedNoteIndex ,selectTitle}){
 
     const [addingNote, setAddingNote] =useState(false);
     const [title , setTitle]=useState('');
 
     function addNoteBtn(){
-        setTitle('');
-        setAddingNote(!addingNote);
+            setTitle('');
+            setAddingNote(!addingNote);
+       
     }
     function updateTitle(e){
         setTitle({title: e});
     }
     function newNoteSubmit(){
         console.log(`${title.title} added`);
+        if(title!==null){
+            db.collection('notes').add({
+                title: title.title,
+                body: ''
+            })
+        }else{
+            alert("please Add the title");
+        }
+        
     }
 
-    function deleteNote(){
-        console.log("dleted note");
+    function deleteNote(note){
+        console.log("deleted note");
+        if(window.confirm('Do you Want to delete this note?')){
+            db.collection('notes').doc(note.id).delete();
+        }
     }
     if(notes){
         return(
@@ -36,33 +50,33 @@ function Sidebar({notes , selectedNoteIndex ,selectedNote}){
                         placeholder="Enter your title"
                         onKeyUp={(e)=>updateTitle(e.target.value)}>
                         </input>
-                        <button 
+                        <button
                         className="newNoteSubmitBtn"
-                        onClick={newNoteSubmit}>Submit</button>
+                        onClick={newNoteSubmit} >Submit</button>
                     </div> :
                     null 
                 }
                 <hr/>
-              <List>
+              <ul>
                   {
                       notes.map((note , index ,id)=>{
                           return(
-                              <div key={index}>
+                              <li key={index}>
                                   <SidebarItems 
                                   note={note} 
                                   id={id} 
                                   index ={index}
                                   selectedNoteIndex={selectedNoteIndex}
-                                  selectedNote={()=>selectedNote(note,index)}
-                                  deleteNote={deleteNote}>      
+                                  selectnote={()=>selectTitle(note,index)}
+                                  deletenote={deleteNote}>      
                                   </SidebarItems>
-                                  <Divider></Divider>
-                              </div>
+                                  <hr/>
+                              </li>
 
                           )
                       })
                   }
-              </List>
+              </ul>
             </div>
         )
     }else{

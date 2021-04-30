@@ -24,10 +24,33 @@ function App() {
     
   }, [setNotes])
 
+  function selectTitle(note,index){
+    console.log(`selected note is ${note.titel} with index ${index} from app.js`)
+    let selectnote =note;
+    console.log(`${selectnote} from app.js`);
+    setSelectedNote(note);
+  }
+  function noteUpdated(id,text){
+    console.log(text)
+    db.collection('notes').doc(id).update({
+      body: text
+    })
+  }
+
   return (
     <div className="App">
-      <Sidebar></Sidebar>
-      <Editor></Editor>
+      <div className="sidebar">
+      <Sidebar selectTitle={selectTitle}
+      selectedNoteIndex={selectedNoteIndex}
+      notes={notes}
+      ></Sidebar>
+     </div>
+      <div className="editor">
+        {
+          selectedNote? <Editor selectedNote={selectedNote} noteUpdated={noteUpdated}></Editor>: <h4>select any note to display</h4>
+        }
+      </div>
+      
     </div>
   );
 }

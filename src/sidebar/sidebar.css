@@ -1,0 +1,32 @@
+button {
+  position: relative;
+  border: none;
+  background: skyblue;
+  outline: none;
+  width: 100%;
+  color: white;
+  font-size: 30px;
+  padding: 8px 15px;
+  z-index: 10;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+button:hover {
+  background: blue;
+  transition: 0.2s;
+}
+
+input {
+  text-align: center;
+  font-size: 15px;
+  width: 100%;
+  padding: 10px 0px;
+  outline: none;
+  border: none;
+  background: transparent;
+  color: white;
+}
