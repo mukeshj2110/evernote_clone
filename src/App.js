@@ -47,7 +47,7 @@ function App() {
      </div>
       <div className="editor">
         {
-          selectedNote? <Editor selectedNote={selectedNote} noteUpdated={noteUpdated}></Editor>: <h4>select any note to display</h4>
+          selectedNote? <Editor selectedNote={selectedNote} noteUpdated={noteUpdated}></Editor>: <h4>Select Any Note to Display in Edit Mode</h4>
         }
       </div>
       
