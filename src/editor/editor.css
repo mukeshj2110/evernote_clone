@@ -3,6 +3,7 @@
     width: 99%;
     font-size: 35px;
     box-shadow: -5px 0px 30px rgba(255, 255, 255, 0.733);
+    overflow-y: scroll;
   }
   
   .editor_container h2 {

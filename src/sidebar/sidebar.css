@@ -1,13 +1,26 @@
+.sidebar_container{
+  margin-top: 0px;
+  width: 300px;
+  height: 100%;
+  box-sizing: border-box;
+  float: left;
+  /* overflow-y: scroll; */
+  overflow-x: hidden;
+
+}
+
 button {
-  position: relative;
+  /* position: relative; */
   border: none;
   background: skyblue;
   outline: none;
-  width: 100%;
+  width: 300px;
   color: white;
-  font-size: 30px;
+  font-size: 25px;
   padding: 8px 15px;
-  z-index: 10;
+  z-index: 11;
+  margin-top: 0px;
+ 
 }
 
 ul {

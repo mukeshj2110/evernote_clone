@@ -1,7 +1,6 @@
 import React from 'react';
 import './sidebar.css'
 import {useState} from 'react'
-import { Divider, List } from '@material-ui/core';
 import SidebarItems from '../sidebaritems/Sidebaritems';
 import {db} from '../firebaseConfig'
 
@@ -20,13 +19,13 @@ function Sidebar({notes , selectedNoteIndex ,selectTitle}){
     }
     function newNoteSubmit(){
         console.log(`${title.title} added`);
-        if(title.title!==null && title.title!==undefined){
+        if(title.title!==null && title.title!==undefined && title.title.trim().length !==0){
             db.collection('notes').add({
                 title: title.title,
                 body: ''
             })
         }else{
-            alert("please Add the title");
+            alert("Please Add the title OR Dont give blank spaces as title");
         }
         
     }
