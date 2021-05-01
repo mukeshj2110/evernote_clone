@@ -56,7 +56,7 @@ function Sidebar({notes , selectedNoteIndex ,selectTitle}){
                     null 
                 }
                 <hr/>
-              <ul>
+              <ul className="sidebar_list">
                   {
                       notes.map((note , index ,id)=>{
                           return(
