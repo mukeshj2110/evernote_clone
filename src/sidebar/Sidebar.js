@@ -24,6 +24,7 @@ function Sidebar({notes , selectedNoteIndex ,selectTitle}){
                 title: title.title,
                 body: ''
             })
+            setAddingNote(false);
         }else{
             alert("Please Add the title OR Dont give blank spaces as title");
         }
